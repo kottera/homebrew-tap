@@ -1,0 +1,74 @@
+# CI of the tap: brew audit and brew test of every formula under Formula/,
+# on each push and each pull request, on macOS and Linux. It runs on
+# GitHub-hosted runners only, with a read-only token. A tree with no
+# formula is green.
+#
+# A pull request may carry .github/test-archives/, archives named as a
+# formula's URLs name them, to test a formula before its release exists:
+# each such archive is put in Homebrew's download cache in place of the
+# download, and Homebrew still checks it against the formula's sha256.
+# The directory never reaches main, and this workflow fails a push to main
+# that carries it.
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  formulae:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+      HOMEBREW_NO_ANALYTICS: 1
+      HOMEBREW_NO_INSTALL_CLEANUP: 1
+    steps:
+      - name: Set up Homebrew, with this commit as the tap
+        id: brew
+        uses: Homebrew/actions/setup-homebrew@main
+
+      - name: no test archives on main
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        env:
+          TAP_PATH: ${{ steps.brew.outputs.repository-path }}
+        run: |
+          if [ -e "$TAP_PATH/.github/test-archives" ]; then
+            echo "::error::.github/test-archives/ is for a pull request's test, and is never on main"
+            exit 1
+          fi
+
+      - name: brew audit and brew test
+        env:
+          TAP: ${{ steps.brew.outputs.tap-name }}
+          TAP_PATH: ${{ steps.brew.outputs.repository-path }}
+        run: |
+          set -eu
+          cd "$TAP_PATH"
+          set -- Formula/*.rb
+          if [ ! -e "$1" ]; then
+            echo "No formula under Formula/: nothing to audit or test."
+            exit 0
+          fi
+          for f in "$@"; do
+            formula="$TAP/$(basename "$f" .rb)"
+            echo "::group::$formula"
+            brew audit --strict --formula "$formula"
+            cache="$(brew --cache --formula "$formula")"
+            archive=".github/test-archives/${cache##*--}"
+            if [ -f "$archive" ]; then
+              echo "Using $archive in place of the download."
+              mkdir -p "$(dirname "$cache")"
+              cp "$archive" "$cache"
+            fi
+            brew install --formula "$formula"
+            brew test "$formula"
+            echo "::endgroup::"
+          done
