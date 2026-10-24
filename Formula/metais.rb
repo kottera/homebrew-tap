@@ -1,4 +1,4 @@
-# Generated from the SHA256SUMS of metais v1.0.0-rc.2 by
+# Generated from the SHA256SUMS of metais v1.0.0-rc.3 by
 # go run ./internal/tools/release formula. Do not edit it by hand.
 class Metais < Formula
   desc "Reference tool for METAIS packages, which turn input data into files"
@@ -7,25 +7,25 @@ class Metais < Formula
 
   on_macos do
     on_intel do
-      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.2/metais_1.0.0-rc.2_darwin_amd64.tar.gz"
-      sha256 "be54d48cda6ca3df5062da831e3bd8db94bc5efa74056f36d2876e35215cb708"
+      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.3/metais_1.0.0-rc.3_darwin_amd64.tar.gz"
+      sha256 "173944dd5b14fef84a699e2ebb6eb1e0def80c9939fab38bb774c54b8187911d"
     end
 
     on_arm do
-      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.2/metais_1.0.0-rc.2_darwin_arm64.tar.gz"
-      sha256 "f3da45fb6cb5311b495e29c75c05e106e4c62fbe3659cceeacaca23820897bdf"
+      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.3/metais_1.0.0-rc.3_darwin_arm64.tar.gz"
+      sha256 "8ff0776ab95bf17121b02b92e619bec239cac27686857272f10ebcc64de30437"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.2/metais_1.0.0-rc.2_linux_amd64.tar.gz"
-      sha256 "8b136e6f29aca0cc762ae8fd5f87831b7bb94f308d04f400eced2e38d1e16c71"
+      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.3/metais_1.0.0-rc.3_linux_amd64.tar.gz"
+      sha256 "1a1aa32aa2a7dd2087867b02fb7228a0aa5b99dde2343eb06f47a6eba24fd282"
     end
 
     on_arm do
-      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.2/metais_1.0.0-rc.2_linux_arm64.tar.gz"
-      sha256 "c4497e757b3205ca02309d2d45215db4382b0f34a57e7358e36360a3333d94f0"
+      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.3/metais_1.0.0-rc.3_linux_arm64.tar.gz"
+      sha256 "7750ddf206c274fdb00e1f7867f4add7f95676fb99f3b6fe367a56d54fc31b81"
     end
   end
 
