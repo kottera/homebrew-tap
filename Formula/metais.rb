@@ -1,4 +1,4 @@
-# Generated from the SHA256SUMS of metais v1.0.0-rc.7 by
+# Generated from the SHA256SUMS of metais v1.0.0 by
 # go run ./internal/tools/release formula. Do not edit it by hand.
 class Metais < Formula
   desc "Reference tool for METAIS packages, which turn input data into files"
@@ -7,25 +7,25 @@ class Metais < Formula
 
   on_macos do
     on_intel do
-      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.7/metais_1.0.0-rc.7_darwin_amd64.tar.gz"
-      sha256 "9efba33f839f81717fd5815fe2217bf6ebc801b6b894d7bb21f9e39356c41e24"
+      url "https://github.com/kottera/metais/releases/download/v1.0.0/metais_1.0.0_darwin_amd64.tar.gz"
+      sha256 "0d831c91c79b3a851f55e4da3196a1340ac0e7af92d3cf4d7289dbc59ac868ee"
     end
 
     on_arm do
-      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.7/metais_1.0.0-rc.7_darwin_arm64.tar.gz"
-      sha256 "8b5aca5ed44bc08f8996ebc63d57d92ea292b4bc19cbc0ec60d215bb011253b7"
+      url "https://github.com/kottera/metais/releases/download/v1.0.0/metais_1.0.0_darwin_arm64.tar.gz"
+      sha256 "da0d818b072cb8bd580a2e4b3696fe9bacf91a157abf1a5e42133c4599b34df5"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.7/metais_1.0.0-rc.7_linux_amd64.tar.gz"
-      sha256 "3b6659255f0b3805393290b6fb8ae77bf4e3d43e4dd79e12542439d8bc3cec79"
+      url "https://github.com/kottera/metais/releases/download/v1.0.0/metais_1.0.0_linux_amd64.tar.gz"
+      sha256 "fd7481dcdc7d93dfbe2f303e7959e7d7458a83ecea70073dfe19d6f413d677e9"
     end
 
     on_arm do
-      url "https://github.com/kottera/metais/releases/download/v1.0.0-rc.7/metais_1.0.0-rc.7_linux_arm64.tar.gz"
-      sha256 "fa871ba8644572a6e9a5937d9579997951fac40f58c9fa6906d24345fc36168f"
+      url "https://github.com/kottera/metais/releases/download/v1.0.0/metais_1.0.0_linux_arm64.tar.gz"
+      sha256 "6dc7b1cd5e10610e3e32e950a79164d2f397873168865ce94f454fd2bbc4b70e"
     end
   end
 
